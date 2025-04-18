@@ -3,7 +3,7 @@
 # Function to revert Maven version change
 cleanup() {
   echo "Running: mvn versions:revert -q"
-  mvn versions:revert -q
+  mvn org.codehaus.mojo:versions-maven-plugin:2.18.0:revert -q
 }
 
 # Set the trap to call cleanup on EXIT
@@ -21,7 +21,7 @@ BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 # Set the Maven version to the branch name with -SNAPSHOT quietly
 echo "Running: mvn versions:set -DnewVersion=${BRANCH}-SNAPSHOT -q"
-mvn versions:set -DnewVersion=${BRANCH}-SNAPSHOT -q
+mvn org.codehaus.mojo:versions-maven-plugin:2.18.0:set -DnewVersion=${BRANCH}-SNAPSHOT -q
 
 # Collect all arguments into a single command string
 MAVEN_COMMAND="$@"
